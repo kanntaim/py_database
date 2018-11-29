@@ -13,6 +13,7 @@ class UnionReporting:
             i = 0
             for key in kwargs.keys():
                 kwargs[key] = args[i]
+                i += 1
             tests.append(ItemClass(**kwargs))
         return tests
 
@@ -23,6 +24,6 @@ class UnionReporting:
         return UnionReporting.general_sql(TestItem, query, test_name=None, execution_time=None)
 
     @staticmethod
-    def get_tests_since_time( time):
+    def get_tests_since_time(time):
         query = ""
         return UnionReporting.general_sql(TestItem, params=time, project_name=None, test_name=None, start_time=None)
