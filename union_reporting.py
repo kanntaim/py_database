@@ -20,10 +20,9 @@ class UnionReporting:
 
     @staticmethod
     def get_tests_min_launch_time(self):
-        query = "select browser, count(id) " \
-            "from test " \
-            "group by browser"
-        self.general_sql(TestItem, query, project_name=None, test_name=None, execution_time=None)
+        query = "select name, start_time " \
+            "from test "
+        self.general_sql(TestItem, query, test_name=None, execution_time=None)
 
     @staticmethod
     def get_tests_since_time(self, time):
