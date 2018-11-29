@@ -6,4 +6,4 @@ class TestItem:
         self.start_time = start_time
 
     def __str__(self):
-        return [self.project_name, self.test_name, self.execution_time, self.start_time]
+        return [self.project_name, self.test_name, self.execution_time, self.start_time].__str__()

@@ -1,7 +1,5 @@
 from database import Database
-from tables.items.test_item import TestItem
-from tables.items.browser_item import BrowserItem
-from tables.items.project_item import ProjectItem
+from items.test_item import TestItem
 
 
 class UnionReporting:
