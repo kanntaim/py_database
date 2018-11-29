@@ -7,15 +7,16 @@ class Database:
 
     def login(self, database, host='localhost', user='root', password=''):
         try:
-            connection = mysql.connector.connect(host, database, user, password)
+            connection = mysql.connector.connect(host=host, database=database, user=user, password=password)
+            return connection
         except mysql.connector.Error as e:
-            print(e.with_traceback())
-        return connection
+            print(e.with_traceback(None))
 
     def close_connection(self):
         self.connection.close()
 
-    def execute_query(self, query, params=None):
+    def execute_select_query(self, query, params=None):
         cursor = self.connection.cursor()
         cursor.execute(query, params)
         return cursor.fetchall()
+
