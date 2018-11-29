@@ -25,5 +25,7 @@ class UnionReporting:
 
     @staticmethod
     def get_tests_since_time(time):
-        query = ""
-        return UnionReporting.general_sql(TestItem, params=time, project_name=None, test_name=None, start_time=None)
+        query = "select name, start_time " \
+                "from test " \
+                "where start_time>=%s"
+        return UnionReporting.general_sql(TestItem, params=time, test_name=None, start_time=None)
