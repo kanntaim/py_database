@@ -33,7 +33,8 @@ class UnionReporting:
                 'from test t join project p on t.project_id = p.id ' \
                 'where t.start_time>=%s ' \
                 'order by by p.name, t.name'
-        return UnionReporting.general_sql(TestItem, query, params=time, test_name=None, start_time=None)
+        return UnionReporting.general_sql(TestItem, query, params=time, project_name=None, test_name=None,
+                                          start_time=None)
 
     @staticmethod
     def get_project_tests_count():
@@ -44,7 +45,7 @@ class UnionReporting:
 
     @staticmethod
     def get_browser_test_launches_count():
-        query = 'select \'Chrome\', (select count(id) from test where browser = chrome ' \
+        query = 'select \'Chrome\', (select count(id) from test where browser = chrome) ' \
                 'union ' \
-                'select \'Firefox\', (select count(id) from test where browser = firefox'
+                'select \'Firefox\', (select count(id) from test where browser = firefox)'
         return UnionReporting.general_sql(BrowserItem, query, browser=None, tests_launched=None)
